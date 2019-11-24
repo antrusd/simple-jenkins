@@ -1,3 +1,7 @@
 #!/bin/bash
 
+set -x
+
 source ./.env && printenv $1
+
+exit 0
