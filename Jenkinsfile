@@ -8,7 +8,7 @@ pipeline {
     }
 
     environment {
-        SIMPLE_ENV = getenv('SIMPLE_ENV')
+        SIMPLE_ENV = getenv("SIMPLE_ENV")
     }
 
     stages {
