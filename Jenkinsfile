@@ -1,5 +1,5 @@
 def getenv(String envname) {
-    return """${sh(returnStdout: true, script: 'source .env && echo $${envname}')}""".trim()
+    return """${sh(returnStdout: true, script: '. .env && echo $${envname}')}""".trim()
 }
 
 pipeline {
