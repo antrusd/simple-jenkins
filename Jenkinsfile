@@ -1,13 +1,14 @@
+def getenv(String envname) {
+    return """${sh(returnStdout: true, script: 'source .env && echo $${envname}')}""".trim()
+}
+
 pipeline {
     agent {
         label "master && linux"
     }
 
     environment {
-        script {
-            def props = readProperties file: '.env'
-            SIMPLE_ENV = props.SIMPLE_ENV
-        }
+        SIMPLE_ENV = getenv('SIMPLE_ENV')
     }
 
     stages {
