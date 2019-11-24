@@ -2,6 +2,4 @@
 
 set -x
 
-source ./.env && printenv $1
-
-exit 0
+source ./.env && result=$(printenv $1) && echo $result
