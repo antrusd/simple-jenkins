@@ -6,7 +6,7 @@ pipeline {
     environment {
         script {
             def props = readProperties file: '.env'
-            env.SIMPLE_ENV = props.SIMPLE_ENV
+            SIMPLE_ENV = props.SIMPLE_ENV
         }
     }
 
