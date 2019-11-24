@@ -1,3 +1,3 @@
 #!/bin/bash
 
-source .env && printenv $1
+source ./.env && printenv $1
