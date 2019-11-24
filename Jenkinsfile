@@ -1,5 +1,5 @@
-def getenv() {
-    return sh(script: "export `egrep -v '^\\s*#' .env | xargs`", returnStdout: true).trim()
+def getenv(String envname) {
+    return sh(script: "export `egrep ^$envname .env | xargs`", returnStdout: true).trim()
 }
 
 pipeline {
@@ -8,7 +8,7 @@ pipeline {
     }
 
     environment {
-        _ = getenv()
+        SIMPLE_ENV = getenv("SIMPLE_ENV")
     }
 
     stages {
