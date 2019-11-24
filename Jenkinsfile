@@ -1,5 +1,5 @@
 def getenv(String envname) {
-    result = sh(script: ". ./.env && printenv $envname", returnStdout: true)
+    result = sh(script: ". ./.env && printenv $envname || true", returnStdout: true)
     return result.trim()
 }
 
