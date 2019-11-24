@@ -1,5 +1,5 @@
 def getenv(String envname) {
-    return sh(script: "`egrep ^$envname .env | xargs` printenv $envname", returnStdout: true).trim()
+    return sh(script: "export `egrep ^$envname .env | xargs` && printenv $envname", returnStdout: true).trim()
 }
 
 pipeline {
