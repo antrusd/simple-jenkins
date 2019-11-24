@@ -1,5 +1,6 @@
 def getenv(String envname) {
-    return sh(script: "export `egrep ^$envname .env | xargs` && printenv $envname", returnStdout: true).trim()
+    def result = readProperties file: '.env'
+    return result[$envname]
 }
 
 pipeline {
@@ -9,6 +10,7 @@ pipeline {
 
     environment {
         SIMPLE_ENV = getenv("SIMPLE_ENV")
+        MASK_VAR = getenv("MASK_VAR")
     }
 
     stages {
