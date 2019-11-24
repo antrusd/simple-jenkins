@@ -3,7 +3,12 @@ pipeline {
         label "master && linux"
     }
 
-    sh 'source .env'
+    environment {
+        script {
+            def props = readProperties file: '.env'
+            env.SIMPLE_ENV = props.SIMPLE_ENV
+        }
+    }
 
     stages {
         stage('Execute Command 1') {
