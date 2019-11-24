@@ -1,5 +1,5 @@
-def getenv(String envname) {
-    return sh(script: "./getdotenv $envname", returnStdout: true).trim()
+def getenv() {
+    return sh(script: "export $(grep -v '^#' .env | xargs)", returnStdout: true).trim()
 }
 
 pipeline {
@@ -8,7 +8,7 @@ pipeline {
     }
 
     environment {
-        SIMPLE_ENV = getenv("SIMPLE_ENV")
+        _ = getenv()
     }
 
     stages {
