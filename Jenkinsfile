@@ -1,5 +1,5 @@
 def getenv() {
-    return sh(script: "export $(grep -v '^#' .env | xargs)", returnStdout: true).trim()
+    return sh(script: "export `egrep -v '^\s*#' .env | xargs`", returnStdout: true).trim()
 }
 
 pipeline {
