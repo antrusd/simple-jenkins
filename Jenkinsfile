@@ -1,5 +1,6 @@
 def getenv(String envname) {
-    return """${sh(returnStdout: true, script: '. ./.env && printenv $envname')}""".trim()
+    result = sh(script: ". ./.env && printenv $envname", returnStdout: true)
+    return result.trim()
 }
 
 pipeline {
