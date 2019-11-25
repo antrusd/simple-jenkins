@@ -20,7 +20,7 @@ pipeline {
         stage('Variable Setup') {
             steps {
                 script {
-                    if ("${TERRAFORM_VM_COUNT}".toInteger() > 0) {
+                    if ("${VM_COUNT}".toInteger() > 0) {
                         TF_OPERATION = 'Create'
                     } else {
                         TF_OPERATION = 'Delete'
