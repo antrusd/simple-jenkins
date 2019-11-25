@@ -18,9 +18,8 @@ pipeline {
 
     stages {
         stage('Variable Setup') {
-            steps {
+            script {
                 TF_VM_COUNT = ${VM_COUNT}.toInteger()
-                echo "dummy step"
             }
         }
 
