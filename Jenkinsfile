@@ -1,4 +1,4 @@
-def TF_OPERATION = 'Create'
+def TF_VM_COUNT = 0
 
 def getenv(String envname) {
     def result = readProperties file: '.env'
@@ -18,13 +18,15 @@ pipeline {
 
     stages {
         stage('Variable Setup' {
-            TF_OPERATION = ${VM_COUNT}.toInteger()
+            steps {
+                TF_VM_COUNT = ${VM_COUNT}.toInteger()
+            }
         }
 
         stage('Execute Command 1') {
             when {
                 expression {
-                    TF_OPERATION > 0
+                    TF_VM_COUNT > 0
                 }
             }
             steps {
@@ -35,7 +37,7 @@ pipeline {
         stage('Execute Command 2') {
             when {
                 expression {
-                    TF_OPERATION == 0
+                    TF_VM_COUNT == 0
                 }
             }
             steps {
