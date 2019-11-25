@@ -17,7 +17,7 @@ pipeline {
     }
 
     stages {
-        stage('Variable Setup' {
+        stage('Variable Setup') {
             steps {
                 TF_VM_COUNT = ${VM_COUNT}.toInteger()
             }
@@ -34,6 +34,7 @@ pipeline {
                 echo "Create Instance"
             }
         }
+
         stage('Execute Command 2') {
             when {
                 expression {
